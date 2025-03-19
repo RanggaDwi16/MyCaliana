@@ -15,25 +15,54 @@ class $AssetsImagesGen {
   /// File path: assets/images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
 
+  /// File path: assets/images/illustration1.jpg
+  AssetGenImage get illustration1Jpg =>
+      const AssetGenImage('assets/images/illustration1.jpg');
+
   /// File path: assets/images/illustration1.png
-  AssetGenImage get illustration1 =>
+  AssetGenImage get illustration1Png =>
       const AssetGenImage('assets/images/illustration1.png');
 
+  /// File path: assets/images/illustration2.jpg
+  AssetGenImage get illustration2Jpg =>
+      const AssetGenImage('assets/images/illustration2.jpg');
+
   /// File path: assets/images/illustration2.png
-  AssetGenImage get illustration2 =>
+  AssetGenImage get illustration2Png =>
       const AssetGenImage('assets/images/illustration2.png');
 
+  /// File path: assets/images/illustration3.jpg
+  AssetGenImage get illustration3Jpg =>
+      const AssetGenImage('assets/images/illustration3.jpg');
+
   /// File path: assets/images/illustration3.png
-  AssetGenImage get illustration3 =>
+  AssetGenImage get illustration3Png =>
       const AssetGenImage('assets/images/illustration3.png');
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/logo_caliana.png
   AssetGenImage get logoCaliana =>
       const AssetGenImage('assets/images/logo_caliana.png');
 
+  /// File path: assets/images/mycaliana.png
+  AssetGenImage get mycaliana =>
+      const AssetGenImage('assets/images/mycaliana.png');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [avatar, illustration1, illustration2, illustration3, logoCaliana];
+  List<AssetGenImage> get values => [
+        avatar,
+        illustration1Jpg,
+        illustration1Png,
+        illustration2Jpg,
+        illustration2Png,
+        illustration3Jpg,
+        illustration3Png,
+        logo,
+        logoCaliana,
+        mycaliana
+      ];
 }
 
 class Assets {
