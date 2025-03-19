@@ -3,6 +3,12 @@
 A **Flutter** application implementing **Clean Architecture** and **State Management with Riverpod**.  
 This app allows users to **schedule pre-registration**, **validate visit times**, and manage **registration data** efficiently.
 
+---
+
+## 🔐 Login Credential
+
+- ✉️ Email: interviewcaliana@gmail.com
+- 🔑 Password: R3cruitment!
 
 ---
 
@@ -14,7 +20,7 @@ This app allows users to **schedule pre-registration**, **validate visit times**
 ✅ **Cupertino Timer Picker** for visit time selection  
 ✅ **SharedPreferences** for user data persistence  
 ✅ **Custom SnackBar** for in-app notifications  
-✅ **BottomSheet & Dialogs** for enhanced user interaction  
+✅ **BottomSheet & Dialogs** for enhanced user interaction
 
 ---
 
@@ -24,9 +30,9 @@ This app allows users to **schedule pre-registration**, **validate visit times**
 
 Make sure you have the following installed:
 
-- **Flutter 3.27.4**  
-- **Dart SDK**  
-- **IDE** (VS Code, Android Studio, or any Flutter-supported IDE)  
+- **Flutter 3.27.4**
+- **Dart SDK**
+- **IDE** (VS Code, Android Studio, or any Flutter-supported IDE)
 
 ### 2️⃣ Clone & Run
 
@@ -43,3 +49,4 @@ $ dart run build_runner watch --delete-conflicting-outputs
 
 # Run the app
 $ flutter run
+```

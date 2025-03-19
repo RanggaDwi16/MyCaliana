@@ -42,12 +42,12 @@ Raw<GoRouter> router(RouterRef ref) {
         path: '/main',
         name: RouterName.main,
         builder: (context, state) => const MainPage(),
-        redirect: (context, state) async {
-          final sharedPrefs = await ref.read(sharedPreferencesProvider.future);
-          final isLoggedIn = sharedPrefs.getString('user') != null;
+        // redirect: (context, state) async {
+        //   // final sharedPrefs = await ref.read(sharedPreferencesProvider.future);
+        //   // final isLoggedIn = sharedPrefs.getString('user') != null;
 
-          return isLoggedIn ? null : '/login';
-        },
+        //   // return isLoggedIn ? null : '/login';
+        // },
       ),
       GoRoute(
         path: '/notification',

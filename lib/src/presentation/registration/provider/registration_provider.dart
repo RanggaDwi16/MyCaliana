@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final emailErrorProvider = StateProvider<String?>((ref) => null);
+final passwordErrorProvider = StateProvider<String?>((ref) => null);
 final isButtonEnabledProvider = StateProvider<bool>((ref) => false);
 
 class RegistrationData {

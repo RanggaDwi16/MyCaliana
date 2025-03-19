@@ -6,7 +6,7 @@ class AppTheme {
       brightness: Brightness.light,
       primaryColor: Colors.black,
       cardColor: Colors.white,
-      scaffoldBackgroundColor: const Color(0xFFF6F3F7),
+      scaffoldBackgroundColor: AppColor.whiteColor,
       fontFamily: 'Inter',
       appBarTheme: const AppBarTheme(
         color: Colors.white,

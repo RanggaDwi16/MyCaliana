@@ -19,7 +19,6 @@ class PraRegistrationPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formKey = GlobalKey<FormState>();
     final namaController = useTextEditingController();
     final emailController = useTextEditingController();
     final tanggalController = useTextEditingController();
@@ -94,113 +93,107 @@ class PraRegistrationPage extends HookConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
           child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Gap(20),
-                  const Center(
-                    child: Text(
-                      '1',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Gap(20),
+                const Center(
+                  child: Text(
+                    '1',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const Gap(20),
-                  const Center(
-                    child: Text(
-                      'Data Pribadi',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
+                ),
+                const Gap(20),
+                const Center(
+                  child: Text(
+                    'Data Pribadi',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const Gap(30),
-                  CustomTextField(
-                    controller: namaController,
-                    labelText: 'Nama',
-                    hintText: 'Nama',
+                ),
+                const Gap(30),
+                CustomTextField(
+                  controller: namaController,
+                  labelText: 'Nama',
+                  hintText: 'Nama',
+                  isRegister: true,
+                  isRequired: true,
+                  prefixIcon: Icons.person_outline,
+                ),
+                const Gap(20),
+                CustomTextField(
+                    controller: emailController,
+                    labelText: 'Email',
+                    hintText: 'Email',
                     isRegister: true,
                     isRequired: true,
-                    prefixIcon: Icons.person_outline,
-                  ),
-                  const Gap(20),
-                  CustomTextField(
-                      controller: emailController,
-                      labelText: 'Email',
-                      hintText: 'Email',
-                      isRegister: true,
-                      isRequired: true,
-                      keyboardType: TextInputType.emailAddress,
-                      prefixIcon: Icons.alternate_email_outlined,
-                      validator: validateEmail),
-                  if (emailError != null)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4.0, left: 12.0),
-                      child: Text(
-                        emailError,
-                        style: const TextStyle(color: Colors.red, fontSize: 14),
-                      ),
+                    keyboardType: TextInputType.emailAddress,
+                    prefixIcon: Icons.alternate_email_outlined,
+                    validator: validateEmail),
+                if (emailError != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, left: 12.0),
+                    child: Text(
+                      emailError,
+                      style: const TextStyle(color: Colors.red, fontSize: 14),
                     ),
-                  const Gap(20),
-                  CustomTextField(
-                    controller: tanggalController,
-                    labelText: 'Tanggal Kunjungan',
-                    isRequired: true,
-                    hintText: 'Pilih Tanggal Kunjungan',
-                    prefixIcon: Icons.calendar_today_outlined,
-                    isCalendar: true,
-                    onTap: () => DatePickerWidget.show(
-                        context, tanggalController, validateForm),
                   ),
-                  const Gap(20),
-                  CustomTextField(
-                    controller: waktuController,
-                    labelText: 'Waktu Kunjungan',
-                    isRequired: true,
-                    hintText: 'Pilih Waktu Kunjungan',
-                    isCalendar: true,
-                    prefixIcon: Icons.access_time_outlined,
-                    onTap: () => TimePickerWidget.show(
-                        context, waktuController, waktuError, validateForm),
-                  ),
-                  if (waktuError.value != null)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4.0, left: 12.0),
-                      child: Text(
-                        waktuError.value!,
-                        style: const TextStyle(color: Colors.red, fontSize: 14),
-                      ),
+                const Gap(20),
+                CustomTextField(
+                  controller: tanggalController,
+                  labelText: 'Tanggal Kunjungan',
+                  isRequired: true,
+                  hintText: 'Pilih Tanggal Kunjungan',
+                  prefixIcon: Icons.calendar_today_outlined,
+                  isCalendar: true,
+                  onTap: () => DatePickerWidget.show(
+                      context, tanggalController, validateForm),
+                ),
+                const Gap(20),
+                CustomTextField(
+                  controller: waktuController,
+                  labelText: 'Waktu Kunjungan',
+                  isRequired: true,
+                  hintText: 'Pilih Waktu Kunjungan',
+                  isCalendar: true,
+                  prefixIcon: Icons.access_time_outlined,
+                  onTap: () => TimePickerWidget.show(
+                      context, waktuController, waktuError, validateForm),
+                ),
+                if (waktuError.value != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, left: 12.0),
+                    child: Text(
+                      waktuError.value!,
+                      style: const TextStyle(color: Colors.red, fontSize: 14),
                     ),
-                  const Gap(10),
-                  const Text(
-                      'Rentang waktu kunjungan pengujung : 09.00 - 17.00'),
-                  const Gap(30),
-                  Button.filled(
-                    label: 'Kirim Undangan',
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        context.showCustomSnackBar("Kirim Undangan Berhasil");
-                        context.pushNamed(RouterName.main);
-                      }
-                    },
-                    disabled: !isButtonEnabled,
                   ),
-                  const Gap(10),
-                  Button.outlined(
-                    label: 'Batal',
-                    onPressed: () {
-                      context.pop();
-                    },
-                  ),
-                ],
-              ),
+                const Gap(10),
+                const Text('Rentang waktu kunjungan pengujung : 09.00 - 17.00'),
+                const Gap(30),
+                Button.filled(
+                  label: 'Kirim Undangan',
+                  onPressed: () {
+                    context.showCustomSnackBar("Kirim Undangan Berhasil");
+                    context.pushNamed(RouterName.main);
+                  },
+                  disabled: !isButtonEnabled,
+                ),
+                const Gap(10),
+                Button.outlined(
+                  label: 'Batal',
+                  onPressed: () {
+                    context.pop();
+                  },
+                ),
+              ],
             ),
           ),
         ),
