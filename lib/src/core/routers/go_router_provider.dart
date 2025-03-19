@@ -2,6 +2,7 @@ import 'package:my_caliana/src/core/provider/shared_pref_provider.dart';
 import 'package:my_caliana/src/core/routers/router_name.dart';
 import 'package:my_caliana/src/presentation/check_in/pages/check_in_page.dart';
 import 'package:my_caliana/src/presentation/forgot_password/pages/forgot_password_page.dart';
+import 'package:my_caliana/src/presentation/forgot_password/pages/success_forgot_password_page.dart';
 import 'package:my_caliana/src/presentation/home/pages/search_feature_page.dart';
 import 'package:my_caliana/src/presentation/login/pages/login_page.dart';
 import 'package:my_caliana/src/presentation/main/pages/main_page.dart';
@@ -83,6 +84,11 @@ Raw<GoRouter> router(RouterRef ref) {
         path: '/forgot-password',
         name: RouterName.forgotPassword,
         builder: (context, state) => const ForgotPasswordPage(),
+      ),
+      GoRoute(
+        path: '/success-forgot-password',
+        name: RouterName.successForgotPassword,
+        builder: (context, state) => const SuccessForgotPasswordPage(),
       ),
       GoRoute(
         path: '/profile',

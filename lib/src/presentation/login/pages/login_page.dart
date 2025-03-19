@@ -176,13 +176,19 @@ class LoginPage extends HookConsumerWidget {
                                     ),
                                   ),
                                 const Gap(20),
-                                const Text(
-                                  'Lupa kata sandi?',
-                                  style: TextStyle(
-                                    color: AppColor.primaryColor,
-                                    fontSize: 16,
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: AppColor.primaryColor,
+                                GestureDetector(
+                                  onTap: () {
+                                    context
+                                        .pushNamed(RouterName.forgotPassword);
+                                  },
+                                  child: const Text(
+                                    'Lupa kata sandi?',
+                                    style: TextStyle(
+                                      color: AppColor.primaryColor,
+                                      fontSize: 16,
+                                      decoration: TextDecoration.underline,
+                                      decorationColor: AppColor.primaryColor,
+                                    ),
                                   ),
                                 ),
                                 const Gap(40),

@@ -9,5 +9,6 @@ class RouterName {
   static const String notification = '/notification';
   static const String checkIn = '/check-in';
   static const String forgotPassword = '/forgot-password';
+  static const String successForgotPassword = '/success-forgot-password';
   static const String profile = '/profile';
 }
