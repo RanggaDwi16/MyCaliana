@@ -21,6 +21,7 @@ class NotificationPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
         title: const Text('Pemberitahuan'),
         centerTitle: true,
         elevation: 1,

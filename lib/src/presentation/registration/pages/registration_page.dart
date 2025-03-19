@@ -56,117 +56,126 @@ class RegistrationPage extends HookConsumerWidget {
       };
     }, []);
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.whiteColor,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: const Text(
-          'Formulir Registrasi',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
+    return WillPopScope(
+      onWillPop: () async {
+        showConfirmationBottomSheet(context);
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColor.whiteColor,
+          surfaceTintColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          title: const Text(
+            'Formulir Registrasi',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Gap(20),
-                const Center(
-                  child: Text(
-                    '1',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
+        body: SafeArea(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Gap(20),
+                  const Center(
+                    child: Text(
+                      '1',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
-                const Gap(20),
-                const Center(
-                  child: Text(
-                    'Data Pribadi',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
+                  const Gap(20),
+                  const Center(
+                    child: Text(
+                      'Data Pribadi',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
-                const Gap(30),
-                CustomTextField(
-                  controller: nikController,
-                  labelText: 'Nomor Kartu Identitas (tidak wajib diisi)',
-                  hintText: 'Masukkan Nomor Kartu Identitas',
-                  isRegister: true,
-                  prefixIcon: Icons.account_box_outlined,
-                  keyboardType: TextInputType.number,
-                ),
-                const Gap(20),
-                CustomTextField(
-                  controller: nomorAksesController,
-                  labelText: 'Nomor Kartu Akses (tidak wajib diisi)',
-                  hintText: 'Masukkan Nomor Kartu Akses',
-                  isRegister: true,
-                  prefixIcon: Icons.account_box_outlined,
-                  keyboardType: TextInputType.number,
-                ),
-                const Gap(20),
-                CustomTextField(
-                  controller: namaController,
-                  labelText: 'Nama',
-                  hintText: 'Nama',
-                  isRegister: true,
-                  isRequired: true,
-                  prefixIcon: Icons.person_outline,
-                ),
-                const Gap(20),
-                CustomTextField(
-                    controller: emailController,
-                    labelText: 'Email',
-                    hintText: 'Email',
+                  const Gap(30),
+                  CustomTextField(
+                    controller: nikController,
+                    labelText: 'Nomor Kartu Identitas (tidak wajib diisi)',
+                    hintText: 'Masukkan Nomor Kartu Identitas',
+                    isRegister: true,
+                    prefixIcon: Icons.account_box_outlined,
+                    keyboardType: TextInputType.number,
+                  ),
+                  const Gap(20),
+                  CustomTextField(
+                    controller: nomorAksesController,
+                    labelText: 'Nomor Kartu Akses (tidak wajib diisi)',
+                    hintText: 'Masukkan Nomor Kartu Akses',
+                    isRegister: true,
+                    prefixIcon: Icons.account_box_outlined,
+                    keyboardType: TextInputType.number,
+                  ),
+                  const Gap(20),
+                  CustomTextField(
+                    controller: namaController,
+                    labelText: 'Nama',
+                    hintText: 'Nama',
                     isRegister: true,
                     isRequired: true,
-                    prefixIcon: Icons.alternate_email_outlined,
-                    validator: validateEmail),
-                if (emailError != null)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0, left: 12.0),
-                    child: Text(
-                      emailError,
-                      style: const TextStyle(color: Colors.red, fontSize: 14),
-                    ),
+                    prefixIcon: Icons.person_outline,
                   ),
-                const Gap(30),
-                Button.filled(
-                  onPressed: () {
-                    ref.read(registrationProvider.notifier).state =
-                        RegistrationData(
-                      nama: namaController.text.trim(),
-                      email: emailController.text.trim(),
-                      nik: nikController.text.trim(),
-                      nomorAkses: nomorAksesController.text.trim(),
-                    );
+                  const Gap(20),
+                  CustomTextField(
+                      controller: emailController,
+                      labelText: 'Email',
+                      hintText: 'Email',
+                      isRegister: true,
+                      isRequired: true,
+                      keyboardType: TextInputType.emailAddress,
+                      prefixIcon: Icons.alternate_email_outlined,
+                      validator: validateEmail),
+                  if (emailError != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4.0, left: 12.0),
+                      child: Text(
+                        emailError,
+                        style: const TextStyle(color: Colors.red, fontSize: 14),
+                      ),
+                    ),
+                  const Gap(30),
+                  Button.filled(
+                    onPressed: () {
+                      ref.read(registrationProvider.notifier).state =
+                          RegistrationData(
+                        nama: namaController.text.trim(),
+                        email: emailController.text.trim(),
+                        nik: nikController.text.trim(),
+                        nomorAkses: nomorAksesController.text.trim(),
+                      );
 
-                    context.pushNamed(RouterName.confirmation);
-                  },
-                  label: 'Selanjutnya',
-                  disabled: !isButtonEnabled,
-                ),
-                const Gap(10),
-                Button.outlined(
-                  onPressed: () {
-                    showConfirmationBottomSheet(context);
-                  },
-                  label: 'Kembali',
-                ),
-              ],
+                      context.pushNamed(RouterName.confirmation);
+                    },
+                    label: 'Selanjutnya',
+                    disabled: !isButtonEnabled,
+                  ),
+                  const Gap(10),
+                  Button.outlined(
+                    onPressed: () {
+                      showConfirmationBottomSheet(context);
+                    },
+                    label: 'Kembali',
+                  ),
+                ],
+              ),
             ),
           ),
         ),
